@@ -1,0 +1,3 @@
+[submodule "wingsxi"]
+    path = wingsxi
+    url = https://gitlab.com/ffxiwings/wings.git

@@ -6,20 +6,27 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 80:80
     volumes:
-      - ./src:/var/www/html/
+      - ./public_html/:/var/www/html/
 
   db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: mariadb:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: test
+      MYSQL_PASSWORD: example
+      MYSQL_DATABASE: wingsdb
+    volumes:
+      - ./wingsxi/sql-wings/:/docker-entrypoint-initdb.d/
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
+networks:
+  default:
+    name: nginx-network
+    external: true
