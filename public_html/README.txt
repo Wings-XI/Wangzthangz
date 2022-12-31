@@ -1,0 +1,1 @@
+Special note I was manually running the SQL script in the file db_cleanup.txt after each import to weed out some oddities in the DB tables. I was meaning to automate that whole process but never got around to it.

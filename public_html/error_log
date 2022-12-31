@@ -1,0 +1,21 @@
+[08-Feb-2022 15:11:50 UTC] PHP Warning:  include(inc/init.php): failed to open stream: No such file or directory in /home/jjivqpmep21y/public_html/index.php on line 1
+[08-Feb-2022 15:11:50 UTC] PHP Warning:  include(): Failed opening 'inc/init.php' for inclusion (include_path='.:/opt/alt/php73/usr/share/pear') in /home/jjivqpmep21y/public_html/index.php on line 1
+[08-Feb-2022 15:11:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function build_zone_drop_down() in /home/jjivqpmep21y/public_html/index.php:87
+Stack trace:
+#0 {main}
+  thrown in /home/jjivqpmep21y/public_html/index.php on line 87
+[01-Jul-2022 07:42:25 UTC] PHP Warning:  mysqli::query(): (HY000/2013): Lost connection to MySQL server during query in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[01-Jul-2022 07:42:25 UTC] PHP Warning:  mysqli::query(): (HY000/2013): Lost connection to MySQL server during query in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[01-Jul-2022 07:45:00 UTC] PHP Warning:  mysqli::query(): (HY000/2013): Lost connection to MySQL server during query in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[01-Jul-2022 08:25:50 UTC] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home/jjivqpmep21y/public_html/inc/init.php on line 15
+[01-Jul-2022 08:25:51 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[01-Jul-2022 08:25:51 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 464
+[01-Jul-2022 08:26:47 UTC] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home/jjivqpmep21y/public_html/inc/init.php on line 15
+[01-Jul-2022 08:26:47 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[01-Jul-2022 08:26:47 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 464
+[01-Jul-2022 08:26:56 UTC] PHP Warning:  mysqli::__construct(): (08004/1040): Too many connections in /home/jjivqpmep21y/public_html/inc/init.php on line 15
+[01-Jul-2022 08:27:03 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[01-Jul-2022 08:27:03 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 464
+[13-Dec-2022 17:13:31 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home/jjivqpmep21y/public_html/inc/init.php on line 15
+[13-Dec-2022 17:13:31 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 364
+[13-Dec-2022 17:13:31 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/jjivqpmep21y/public_html/inc/init.php on line 464

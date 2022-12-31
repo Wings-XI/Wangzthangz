@@ -1,0 +1,354 @@
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_present', '') 
+	WHERE 1;
+
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_pres', '') 
+	WHERE 1;
+
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_past', '') 
+	WHERE 1;
+
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_both', '') 
+	WHERE 1;
+
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_2', '') 
+	WHERE 1;
+
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_war', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_sam', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_blm', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_rdm', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_nin', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_rng', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_mnk', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_bst', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_drg', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_thf', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_smn', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_drk', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_pld', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_brd', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_whm', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_brd', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_whm', '')	WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_parent', '') WHERE 1;
+UPDATE `mob_groups` 
+	SET `name` = REPLACE( name, '_baby', '') WHERE 1;
+
+DELETE FROM mob_groups WHERE 
+	zoneid = 37 AND
+	minLevel >= 100 AND
+	(
+		name = "Arch-Ultima" OR
+		name = "Pyrrha" OR
+		name = "Thalesek" OR
+		name = "Temenos_Ghrah" OR
+		name = "Temenos_Euvhi" OR
+		name = "Temenos_Aern" OR
+		name = "Aerns_Wynav"
+	);
+
+DELETE FROM mob_groups WHERE 
+	zoneid = 38 AND
+	minLevel >= 100 AND
+	(
+		name = "Nergal" OR
+		name = "Aeshma" OR
+		name = "Bata" OR
+		name = "Arch-Omega" OR
+		name = "Apollyon_Demon" OR
+		name = "Apollyon_Taurus" OR
+		name = "Apollyon_Ahriman"
+	);
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 500 WHERE
+	(name = 'Bardha' OR
+	name = 'Pluto' OR
+	name = 'Mountain_Buffalo' OR
+	name = 'Zlatorog' OR
+	name = 'Apollyon_Scavenger' OR
+	name = 'Millenary_Mossback' OR
+	name = 'Gorynich' OR
+	name = 'Cynoprosopi' OR
+	name = 'Kronprinz_Behemoth' OR
+	name = 'Kaiser_Behemoth')
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 501 WHERE
+	(name = 'Barometz' OR
+	name = 'Borametz' OR
+	name = 'Goobbue_Harvester' OR
+	name = 'Cornu' OR
+	name = 'Sirin' OR
+	name = 'Thiazi' OR
+	name = 'Bialozar' OR
+	name = 'Apollyon_Cleaner' OR
+	name = 'Apollyon_Sweeper' OR
+	name = 'Kerkopes' OR
+	name = 'Hyperion' OR
+	name = 'Okeanos' OR
+	name = 'Cronos' OR
+	name = 'Troglodyte_Dhalmel' OR
+	name = 'Criosphinx' OR
+	name = 'Hieracosphinx')
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 502 WHERE
+	(name = 'Fir_Bholg' OR
+	name = 'Jidra' OR
+	name = 'Arboricole_Beetle' OR
+	name = 'Arboricole_Crawler' OR
+	name = 'Arboricole_Hornet' OR
+	name = 'Arboricole_Opo-opo' OR
+	name = 'Arboricole_Raven' OR
+	name = 'Arboricole_Spider' OR
+	name = 'Apollyon_Sapling' OR
+	name = 'Armoury_Crate' OR
+	name = 'Air_Elemental' OR
+	name = 'Dark_Elemental' OR
+	name = 'Earth_Elemental' OR
+	name = 'Fire_Elemental' OR
+	name = 'Ice_Elemental' OR
+	name = 'Light_Elemental' OR
+	name = 'Thunder_Elemental' OR
+	name = 'Water_Elemental')
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 503 WHERE
+	(name = 'Metalloid_Amoeba' OR
+	name = 'Ghost_Clot' OR
+	name = 'Adamantshell' OR
+	name = 'Tieholtsodi' OR
+	name = 'Inhumer' OR
+	name = 'Grave_Digger' OR
+	name = 'Flying_Spear' OR
+	name = 'Evil_Armory')
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 504 WHERE
+	(name ='Na_Qba_Chirurgeon' OR
+	name ='Wootz_Quadav' OR
+	name ='Fossil_Quadav' OR
+	name ='Star_Ruby_Quadav' OR
+	name ='Whitegold_Quadav' OR
+	name ='Lightsteel_Quadav' OR
+	name ='Star_Sapphire_Quadav' OR
+	name ='Carnagechief_Jackbodokk' OR
+	name ='Grognard_Neckchopper' OR
+	name ='Grognard_Footsoldier' OR
+	name ='Grognard_Mesmerizer' OR
+	name ='Grognard_Predator' OR
+	name ='Grognard_Grappler' OR
+	name ='Grognard_Impaler' OR
+	name ='Orcs_Wyvern' OR
+	name ='Dee_Wapa_the_Desolator' OR
+	name ='Yagudo_Knight_Templar' OR
+	name ='Yagudo_Archpriest' OR
+	name ='Yagudos_Avatar' OR
+	name ='Yagudos_Elemental' OR
+	name ='Yagudo_Disciplinant' OR
+	name ='Yagudo_Kapellmeister' OR
+	name ='Yagudo_Prelatess' OR
+	name ='Yagudo_Eradicator')
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, dropid = 9999999, zoneId = 505 WHERE
+	name = 'Proto-Omega' 
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, dropid = 999999, zoneId = 505 WHERE
+	name = 'Gunpod'
+	AND zoneid = 38;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 600 WHERE
+	(
+		name = 'Enhanced_Tiger' OR
+		name = 'Enhanced_Mandragora' OR
+		name = 'Enhanced_Beetle' OR
+		name = 'Enhanced_Lizard' OR
+		name = 'Enhanced_Slime' OR
+		name = 'Enhanced_Pugil' OR
+		name = 'Enhanced_Vulture'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 601 WHERE
+	(
+		name = 'Moblin_Dustman' OR
+		name = 'Goblin_Slaughterman' OR
+		name = 'Kari' OR
+		name = 'Beli' OR
+		name = 'Thrym' OR
+		name = 'Skadi' OR
+		name = 'Telchines_Monk' OR
+		name = 'Telchines_White_Mage' OR
+		name = 'Telchines_Dragoon' OR
+		name = 'Telchiness_Wyvern' OR
+		name = 'Telchines_Bard' OR
+		name = 'Kindred_Black_Mage' OR
+		name = 'Kindred_Summoner' OR
+		name = 'Kindred_Warrior' OR
+		name = 'Kindreds_Elemental' OR
+		name = 'Kindreds_Avatar' OR
+		name = 'Praetorian_Guard_CCXX' OR
+		name = 'Praetorian_Guard_LXXIII' OR
+		name = 'Praetorian_Guard_CXLVIII' OR
+		name = 'Praetorian_Guard_CCCXI' OR
+		name = 'Cryptonberry_Designator' OR
+		name = 'Cryptonberry_Abductor' OR
+		name = 'Cryptonberry_Charmer' OR
+		name = 'Cryptonberry_Skulker' OR
+		name = 'Tonberrys_Elemental' OR
+		name = 'Tonberrys_Avatar' OR
+		name = 'Goblin_Theurgist' OR
+		name = 'Goblin_Fencer' OR
+		name = 'Goblin_Warlord'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 602 WHERE
+	(
+		name = 'Fire_Elemental' OR
+		name = 'Ice_Elemental' OR
+		name = 'Air_Elemental' OR
+		name = 'Earth_Elemental' OR
+		name = 'Thunder_Elemental' OR
+		name = 'Water_Elemental' OR
+		name = 'Dark_Elemental'
+	) 
+	AND zoneid = 37;
+
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 603 WHERE
+	(
+		name = 'Temenos_Aern' OR
+		name = 'Aerns_Wynav' OR
+		name = 'Aerns_Euvhi' OR
+		name = 'Aerns_Elemental' OR
+		name = 'Aerns_Avatar' OR
+		name = 'Temenos_Ghrah'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 604 WHERE
+	(
+		name = 'Airi' OR
+		name = 'Iruci' OR
+		name = 'Enhanced_Ahriman' OR
+		name = 'Enhanced_Dragon' OR
+		name = 'Temenos_Weapon' OR
+		name = 'Temenos_Cleaner'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 605 WHERE
+	(
+		name = 'Fire_Elemental' OR
+		name = 'Thunder_Elemental' OR
+		name = 'Water_Elemental' OR
+		name = 'Earth_Elemental' OR
+		name = 'Ice_Elemental' OR
+		name = 'Air_Elemental' OR
+		name = 'Light_Elemental' OR
+		name = 'Mystic_Avatar'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 606 WHERE
+	(
+		name = 'Grognard_Predator' OR
+		name = 'Grognard_Mesmerizer' OR
+		name = 'Grognard_Footsoldier' OR
+		name = 'Grognard_Grappler' OR
+		name = 'Grognard_Neckchopper' OR
+		name = 'Grognard_Impaler' OR
+		name = 'Orcs_Wyvern' OR
+		name = 'Yagudo_Kapellmeister' OR
+		name = 'Yagudo_Archpriest' OR
+		name = 'Yagudo_Disciplinant' OR
+		name = 'Yagudo_Prelatess' OR
+		name = 'Yagudo_Eradicator' OR
+		name = 'Yagudo_Knight_Templar' OR
+		name = 'Yagudos_Elemental' OR
+		name = 'Yagudos_Avatar' OR
+		name = 'Star_Sapphire_Quadav' OR
+		name = 'Wootz_Quadav' OR
+		name = 'Lightsteel_Quadav' OR
+		name = 'Star_Ruby_Quadav' OR
+		name = 'Whitegold_Quadav' OR
+		name = 'Fossil_Quadav' OR
+		name = 'Abyssdweller_Jhabdebb' OR
+		name = 'Orichalcum_Quadav' OR
+		name = 'Pee_Qoho_the_Python'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, zoneId = 607 WHERE
+	(
+		name = 'Enhanced_Koenigstiger' OR
+		name = 'Enhanced_Pygmaioi' OR
+		name = 'Enhanced_Kettenkaefer' OR
+		name = 'Enhanced_Salamander' OR
+		name = 'Enhanced_Jelly' OR
+		name = 'Enhanced_Makara' OR
+		name = 'Enhanced_Akbaba' OR
+		name = 'Kingslayer_Doggvdegg' OR
+		name = 'Ji_Gho_Ageless' OR
+		name = 'Koo_Buzu_the_Theomanic'
+	) 
+	AND zoneid = 37;
+
+UPDATE mob_groups SET respawntime = 1, spawntype = 3, dropid = 99999, zoneId = 607 WHERE
+	name = 'Proto-Ultima'
+	AND zoneid = 37;
+
+UPDATE mob_groups SET name = "Ix_aern_DRG" WHERE poolid = 2112 and zoneid = 35;
+
+UPDATE mob_groups SET name = "Ix_aern_DRK" WHERE poolid = 4660 and zoneid = 35;
+
+
+DELETE FROM item_equipment WHERE 
+        name = "judges_shield" OR
+        name = "judges_helm" OR
+        name = "judges_cuirass" OR
+        name = "judges_gauntlets" OR
+        name = "judges_cuisses" OR
+        name = "judges_greaves" OR
+        name = "judges_gorget" OR
+        name = "judges_belt" OR
+        name = "judges_earring" OR
+        name = "judges_ring" OR
+        name = "judges_cape" OR
+        name = "judges_sword" OR
+        name = "judges_rod" OR
+        name = "judges_bow" OR
+        name = "judges_arrow" OR
+        name = "judges_lure" OR
+        name = "judges_sword";
+
+DELETE FROM mob_groups WHERE
+	name LIKE 'Bull_[%'OR
+	name LIKE 'Calf_[%'OR 
+	name LIKE 'Cow_[%';

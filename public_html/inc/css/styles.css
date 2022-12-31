@@ -1,0 +1,647 @@
+body {
+	font-size: 18px;
+	line-height: 22px;
+	font-family: 'Open Sans', sans-serif;
+    color: #000;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+a,
+a:visited {
+	color: #000;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+	border-bottom: solid 2px #000;
+	opacity: 0.6;
+}
+
+p {
+	margin: 0 0 20px 0;
+	font-size: 18px;
+	line-height: 26px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0 0 20px 0;
+    line-height: initial;
+}
+
+.wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+
+/* Column Classes
+	Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+--------------------------------------------- */
+.five-sixths,
+.four-sixths,
+.four-fifths,
+.one-fifth,
+.one-fourth,
+.one-half,
+.one-sixth,
+.one-third,
+.three-fourths,
+.three-fifths,
+.three-sixths,
+.two-fourths,
+.two-fifths,
+.two-sixths,
+.two-thirds {
+	float: left;
+	margin-left: 2.564102564102564%;
+}
+
+.one-half,
+.three-sixths,
+.two-fourths {
+	width: 48.717948717948715%;
+}
+
+.one-third,
+.two-sixths {
+	width: 31.623931623931625%;
+}
+
+.four-sixths,
+.two-thirds {
+	width: 65.81196581196582%;
+}
+
+.one-fourth {
+	width: 23.076923076923077%;
+}
+
+.three-fourths {
+	width: 74.35897435897436%;
+}
+
+.one-fifth {
+	width: 17.9487179487179488%;
+}
+
+.two-fifths {
+	width: 38.4615384615384616%;
+}
+
+.three-fifths {
+	width: 58.9743589743589744%;
+}
+
+.four-fifths {
+	width: 79.4871794871794872%;
+}
+
+.one-sixth {
+	width: 14.52991452991453%;
+}
+
+.five-sixths {
+	 width: 82.90598290598291%;
+}
+
+.first {
+	clear: both;
+	margin-left: 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.clearfix:before {
+	display: table;
+	clear: both;
+}
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: 0px 0 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+	background-color: #ccc;
+}
+
+.site-navigation {
+	padding: 20px 0;
+}
+
+.site-navigation ul {
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+.site-navigation ul li {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+
+.site-navigation ul li.active a {
+	background-color: #ccc;
+}
+
+.site-navigation ul li:first-of-type {
+	margin-left: 0;
+}
+
+.site-navigation ul li a {
+	font-size: 18px;
+	line-height: 20px;
+	display: inline-block;
+	padding: 10px 14px;
+    background-color: #eee;
+    color: #444;	
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.site-navigation ul li a:hover {
+	opacity: 1;
+	border: none;
+	background-color: #ccc;
+	text-decoration: none;
+}
+
+.site-navigation span {
+	float: right;
+	font-size:14px;
+	font-style:italic;
+}
+
+.top_content {
+	margin: 50px 0;
+}
+
+.top_content h3 {
+	margin: 0 0 10px 0;
+}
+
+.top_content .fa-trademark {
+	font-size: 12px;
+	vertical-align: super;
+	font-weight: normal;
+}
+
+.data_container {
+	margin: 50px 0;
+}
+
+
+/* Style the accordion panel. Note: hidden by default */
+	.panel {
+		padding: 0 18px 20px;
+		background-color: white;
+		display: none;
+		overflow: hidden;
+	}
+
+	.panel p {
+		font-size: 18px;
+		line-height: 26px;
+	}
+
+/* MOB DATA */
+	.main_content .mob_data_container ul {
+		display: grid;
+		grid-template-columns: 20% 7% 30% 23% 20%;
+		margin: 0;
+		padding: 15px;
+		border-bottom: solid #000 2px;
+	}
+
+	.main_content .mob_data_container ul:nth-of-type(2n+2) {
+	    background-color: #eee;	
+	}
+
+	.main_content .mob_data_container ul li {
+		list-style-type: none;
+		justify-self: start;
+	 	align-self: center;
+	}
+
+	.main_content .zone_container {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.main_content .mob_data_container ul li.drop .fas,
+	.main_content .mob_data_container ul li.steal .fas,
+	.main_content .mob_data_container ul li.name .fas {
+		font-size: 12px;
+		line-height: 12px;
+		vertical-align: middle;
+	}
+
+	.main_content .mob_data_container ul.header li,
+	.main_content .mob_data_container ul li.name {
+		font-weight: bold;
+	}
+
+	.main_content .mob_data_container ul li.name span {
+		display: block;
+		font-size: 14px;
+		font-style: italic;
+		font-weight: normal;
+	}
+
+	.main_content .mob_data_container ul li.drop span,
+	.main_content .mob_data_container ul li.gdrop span,
+	.main_content .mob_data_container ul li.steal span {
+		display: block;
+		margin: 0 0 8px 0;
+		font-size: 16px;
+		line-height: 18px;
+	}
+
+	.main_content .mob_data_container ul li.drop span:last-of-type,
+	.main_content .mob_data_container ul li.gdrop span:last-of-type,
+	.main_content .mob_data_container ul li.steal span:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.main_content .mob_data_container ul.header li {
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	.main_content .zone_container select {
+	    padding: 5px 5px;
+	    font-size: 15px;
+	}
+
+	.main_content .zone_container label {
+	    margin: 0 0 6px 0;
+	    display: inline-block;
+	}
+
+	.main_content .th_container {
+	    display: inline-block;
+	    vertical-align: top;
+	    margin: 0 0 0 20px;
+	}
+
+	.main_content .th_container label {
+		cursor: pointer;
+	    margin: 0 0 11px 0px;
+	    display: inline-block;
+	}
+
+	.mob_data_container {
+		margin: 50px 0;
+	}
+
+	.mob_data_container .nm_mobs_container {
+		margin: 60px 0 0 0;
+	}
+
+/* BCNM DATA */
+	.bcnm_data_container {
+		margin: 50px 0;
+	}
+
+	.bcnm_data_container ul {
+		margin-top: 0;
+	}
+
+	.bcnm_data_container .group {
+		margin: 0 0 30px 0;
+	}
+
+	.bcnm_data_container .group h2 {
+		margin: 0 0 10px 0;
+	}
+
+/* GP ITEM DATA */
+	.guild_data_container {
+		margin: 50px 0;
+	}
+
+	.guild_data_container h2.rank_heading {
+		margin: 40px 0 10px;
+	}
+
+	.guild_data_container ul {
+		display: grid;
+		grid-template-columns: 25% 25% 25% 25%;
+		margin: 0;
+		padding: 15px;
+		border-bottom: solid #000 2px;
+	}
+
+	.guild_data_container div ul:nth-of-type(2n+2) {
+	    background-color: #eee;	
+	}
+
+	.guild_data_container ul li {
+		list-style-type: none;
+		justify-self: start;
+	 	align-self: center;
+	}
+
+	.guild_data_container ul li.name,
+	.guild_data_container ul li.point_value,
+	.guild_data_container ul li.turn_in,
+	.guild_data_container ul li.max_points {
+		font-weight: bold;
+	}
+
+/* CHOCOBO DIGGIN DATA */
+	.chocobo_digging_data_container h2.rank_heading {
+		margin: 40px 0 10px;
+	}
+
+	.chocobo_digging_data_container ul {
+		display: grid;
+		grid-template-columns: 33% 33% 33%;
+		margin: 0;
+		padding: 15px;
+		border-bottom: solid #000 2px;
+	}
+
+	.chocobo_digging_data_container div ul:nth-of-type(2n+2) {
+	    background-color: #eee;	
+	}
+
+	.chocobo_digging_data_container ul li {
+		list-style-type: none;
+		justify-self: start;
+	 	align-self: center;
+	}
+
+	.chocobo_digging_data_container ul li.name,
+	.chocobo_digging_data_container ul li.dig_chance,
+	.chocobo_digging_data_container ul li.dig_special {
+		font-weight: bold;
+	}
+
+/* GEAR */
+	#gear_form {
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 20px 0;
+	}
+
+	#gear_form .input_contaienr {}
+
+	#gear_form .submit_container {
+		flex: 0 0 100%;
+		width: 100%;
+
+	}
+
+	#gear_form label {
+		display: block;
+	}
+
+	#gear_form select {
+		margin: 0 15px 0 0;
+	}
+
+	#gear_form input[type="button"] {
+		padding: 6px;
+	}
+
+	.gear_results.data_container {
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		gap: 20px 0;
+	}
+
+	.gear_results.data_container div {
+		flex: 25%;
+	}
+
+	.gear_results.data_container div a:hover {
+		text-decoration: none;
+		opacity: 1;
+	}
+
+	.gear_results.data_container div img {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 8px 0 0;
+	}
+
+	.gear_results.data_container .icon {
+		cursor: pointer;
+	}
+
+	.gear_results.data_container .icon:hover {
+		text-decoration: none;
+		border: none;
+	}
+
+	.gear_results .popup .ffxiah-wrapper {
+		width: 200px;
+	}
+
+	.gear_popup {
+		display: none;
+		position: absolute;
+		background: #fff;
+		box-shadow: 0px 0px 3px #000;
+		width: 200px;
+		font-size: 14px;
+		padding: 10px;
+		box-sizing: content-box;
+	}
+	
+	.gear_popup .loading {
+		display: block;
+		width: 40%;
+		margin: 0 auto;
+	}
+
+	.gear_popup:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+	.gear_popup .ffxiah-wrapper .ffxiah-icon {
+		float: right;
+	}
+
+	.gear_popup .ffxiah-wrapper .ffxiah-cont > div {
+		margin: 0 0 10px 0;
+	}
+
+	.gear_popup .ffxiah-wrapper .ffxiah-name {
+		margin: 0 20px 0 0;
+	}
+
+	@media only screen and (max-width: 767px) {
+		.gear_results.data_container div {
+			flex: 50%;
+			text-align: center;
+		}
+	}
+
+	@media only screen and (max-width: 600px) {
+		.gear_results.data_container div {
+			flex: 100%;
+		}
+	}
+
+/* RESPONSIVE */
+	@media only screen and (max-width: 1230px){
+		.wrap {
+			padding: 0 25px;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.main_content .mob_data_container ul {
+			display: block;
+			grid-template-columns: 50% 50%;
+			font-size: 0;
+		}
+
+		.main_content .mob_data_container ul li {
+			padding: 15px 0 15px 0;
+			border-bottom: solid 1px #000;
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		.main_content .mob_data_container ul > li:last-of-type {
+			border-bottom: none;
+		}
+
+		.main_content .mob_data_container ul li.name,
+		.main_content .mob_data_container ul li.level {
+			display: inline-block;
+			width: 50%;
+		}
+
+		.main_content .mob_data_container ul li.level {
+			text-align: right;
+		}
+
+		.main_content .guild_data_container ul {
+			display: block;
+			grid-template-columns: 50% 50%;
+			font-size: 0;
+		}
+
+		.main_content .guild_data_container ul li {
+			padding: 15px 0 15px 0;
+			border-bottom: solid 1px #000;
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		.main_content .guild_data_container ul > li:last-of-type {
+			border-bottom: none;
+		}
+
+		.main_content .guild_data_container ul li.level {
+			text-align: right;
+		}
+
+		.main_content .chocobo_digging_data_container ul {
+			display: block;
+			grid-template-columns: 50% 50%;
+			font-size: 0;
+		}
+
+		.main_content .chocobo_digging_data_container ul li {
+			padding: 15px 0 15px 0;
+			border-bottom: solid 1px #000;
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		.main_content .chocobo_digging_data_container ul > li:last-of-type {
+			border-bottom: none;
+		}
+
+		.main_content .chocobo_digging_data_container ul li.level {
+			text-align: right;
+		}
+		.five-sixths,
+		.four-sixths,
+		.four-fifths,
+		.one-fifth,
+		.one-fourth,
+		.one-half,
+		.one-sixth,
+		.one-third,
+		.three-fourths,
+		.three-fifths,
+		.three-sixths,
+		.two-fourths,
+		.two-fifths,
+		.two-sixths,
+		.two-thirds {
+			margin: 0;
+			width: 100%;
+		}
+
+
+	}
+
+	@media only screen and (max-width: 600px) {
+		.main_content .zone_container,
+		.main_content .th_container {
+			display: block;
+			margin: 0;
+		}
+
+		.main_content .zone_container {
+			margin: 0 0 30px 0;
+		}
+		.site-navigation span {
+			display: block;
+			float: none;
+			margin: 0 0 10px 0;
+		}
+
+		.site-navigation ul li {
+			display: block;
+			margin-bottom: 20px;
+			margin-left: 0;
+			width: 100%;			
+		}
+
+		.site-navigation ul li a {
+		    box-sizing: border-box;
+			width: 100%;
+		}
+
+		.site-navigation ul li:last-of-type {
+			margin-bottom: 0
+		}
+	}

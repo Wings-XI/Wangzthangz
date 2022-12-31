@@ -1,0 +1,20 @@
+[03-Feb-2022 19:33:38 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10241): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:38 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10242): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:39 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10243): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:39 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10244): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:39 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10245): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:40 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10246): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:40 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10247): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:40 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10248): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:41 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10249): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
+[03-Feb-2022 19:33:41 UTC] PHP Warning:  copy(https://static.ffxiah.com/images/icon/10250): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/jjivqpmep21y/public_html/assets/image-ripper.php on line 11
