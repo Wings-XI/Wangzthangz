@@ -717,7 +717,7 @@ if ( isset($_POST['callback']) ) {
 		$output = '';
 
 		$output .= "<select id='bcnm_select'>";
-			$output .= "<option value='xx'>Choose a BCNM / KSNM / ENM</option>";
+			$output .= "<option value='xx' selected>Choose a BCNM / KSNM / ENM</option>";
 			foreach ($bcnms_master_table as $key => $value) {
 				$proper_name = ucwords(str_replace('_', ' ', $key));
 				if ( $key == 'royal_jelly' ) {
@@ -735,25 +735,27 @@ if ( isset($_POST['callback']) ) {
 	function get_bcnm_drops( $bcnm ) {
 		require $_SERVER['DOCUMENT_ROOT'] . '/inc/bcnm_arrays.php';
 
-		$selected_bcnm = $bcnms_master_table[$bcnm];
-
 		$output = "";
-		foreach ($selected_bcnm as $key => $value) {
-			$output .= "<div class='group'>";
-				$output .= "<h2>";
-					$output .= "Drop Group ";
-					$output .= $key + 1;
-				$output .= "</h2>";
-				$output .= "<ul>";
-				foreach ($value as $key => $value) {
-					$item_name 	= ($value['itemid'] != 0) 		? get_item_name($value['itemid']) 	: 'Nothing';
-					$amount 	= ($value['itemid'] == 65535) 	? $value['amount'] 					: '';
-					$output .= "<li>";
-						$output .= '<a href="https://www.wingsxi.com/wings/index.php?page=item&id='.$value['itemid'].'" target="_blank">' . $item_name . '</a> ' . $amount . ' - ' . $value['droprate'] / 10 . '%';
-					$output .= "</li>";
-				}
-				$output .= "</ul>";
-			$output .= "</div>";
+		if (!empty($bcnms_master_table[$bcnm])) {
+			$selected_bcnm = $bcnms_master_table[$bcnm];
+
+			foreach ($selected_bcnm as $key => $value) {
+				$output .= "<div class='group'>";
+					$output .= "<h2>";
+						$output .= "Drop Group ";
+						$output .= $key + 1;
+					$output .= "</h2>";
+					$output .= "<ul>";
+					foreach ($value as $key => $value) {
+						$item_name 	= ($value['itemid'] != 0) 		? get_item_name($value['itemid']) 	: 'Nothing';
+						$amount 	= ($value['itemid'] == 65535) 	? $value['amount'] 					: '';
+						$output .= "<li>";
+							$output .= '<a href="https://www.wingsxi.com/wings/index.php?page=item&id='.$value['itemid'].'" target="_blank">' . $item_name . '</a> ' . $amount . ' - ' . $value['droprate'] / 10 . '%';
+						$output .= "</li>";
+					}
+					$output .= "</ul>";
+				$output .= "</div>";
+			}
 		}
 		return $output;
 	}

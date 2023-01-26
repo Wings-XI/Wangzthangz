@@ -32,7 +32,7 @@
 					<?php echo build_bcnm_drop_down(); ?>
 				</div>
 				<div class="bcnm_data_container data_container">
-					<?php echo get_bcnm_drops( 'royal_jelly' ); ?>
+					<?php echo get_bcnm_drops( '' ); ?>
 				</div>
 			</div>
 		</div>
