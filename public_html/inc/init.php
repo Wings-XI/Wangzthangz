@@ -805,7 +805,7 @@ if ( isset($_POST['callback']) ) {
 				$max_points = $row['max_points'];
 				$pattern 	= $row['pattern'];
 				
-				if ( array_key_exists( $pattern, $gp_items[$rank] ) ) {
+				if ( !empty($gp_items[$rank]) and array_key_exists( $pattern, $gp_items[$rank] ) ) {
 					$gp_items[$rank][$pattern]["hqpoints"] = $points;
 				} else {
 					$gp_items[$rank][$pattern] = array(
