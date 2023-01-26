@@ -14,7 +14,7 @@
 			<div class="wrap">
 				<p>REALLY?</p>
 				<p>
-					Not sure what you were hoping to find here but it's a site with like 4 pages and some Google Analytics tied in.
+					Not sure what you were hoping to find here but it's a site with like 4 pages. We don't collect any data from accessing this site.
 				</p>
 				<p>
 					Anyways here's a fun Giphy gif to keep you entertained.

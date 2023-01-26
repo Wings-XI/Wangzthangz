@@ -13,7 +13,7 @@
 
 		<div class="main_content">
 			<div class="wrap">
-				<p>Use it... or don't whatever. Just don't intentionally try and break it like an asshole.</p>
+				<p>Use it... or don't whatever. Just don't intentionally try and break it.</p>
 			</div>
 		</div>
 		<?php include('site-footer.php') ?>

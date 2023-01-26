@@ -9,7 +9,7 @@
 ?>
 <div class="site-navigation">
 	<div class="wrap">
-		<span>Tables Last Updated: 2021-11-11</span>
+		<?php echo get_last_startup(); ?>
 		<ul class="menu">
 			<?php
 				foreach ($menu as $key => $value) {

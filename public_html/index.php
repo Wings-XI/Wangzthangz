@@ -6,10 +6,41 @@
 	</head>
 	<body>
 		<?php include('site-navigation.php') ?>
-		
- 		<div class="top_content">
+		<div class="top_content">
 			<div class="wrap">
 				<h1>Wangz Thangz Mob Drop Tables </h1>
+			</div>
+		</div>
+		
+
+
+		<div class="main_content">
+			<div class="wrap">
+				<div class="form zone_container">
+					<label>Choose a Zone:</label><br/>
+					<?php echo build_zone_drop_down(); ?>
+				</div>
+				<div class="form th_container">
+					<label>Apply Treasure Hunter:</label><br/>
+					<input type="radio" id="thzero" name="th" value="0" checked> <label for="thzero">TH 0</label>
+					<input type="radio" id="thone" name="th" value="1"> <label for="thone">TH 1</label>
+					<input type="radio" id="thtwo" name="th" value="2"> <label for="thtwo">TH 2</label>
+					<input type="radio" id="ththree" name="th" value="3"> <label for="ththree">TH 3</label>
+					<input type="radio" id="thfour" name="th" value="4"> <label for="thfour">TH 4</label>
+				</div>
+				<div class="mob_data_container data_container">
+					<?php echo get_zone_mobs( 116, 0 ); ?>
+					<?php echo get_zone_nm_mobs( 116, 0 ); ?>
+				</div>
+			</div>
+		</div>
+		<div class="top_content">
+			<div class="wrap">
+				<h5>Important Notice:</h5>
+				<p>
+					This site <strong>IS NOW</strong> an "official" WingsXI site so if you see anything that looks wrong please file an issue on the <a href="https://gitlab.com/ffxiwings/wings/-/issues">WingsXI Gitlab</a> or with the <a href="https://wingsxi.com/wings/discord.php">Wings
+					Discord</a>.
+				</p>
 
 				<button class="accordion">What exactly am I looking at here?</button>
 				<div class="panel">
@@ -22,7 +53,7 @@
 				<div class="panel">
 					<p>
 						This is loot that shares the same "drop pool", in other words you're going to get one of these items but never more than one. 
-						Also if the drop rates for all the items add up to 100% then don't worry about having Treasure Hunter because it won't factor in.
+						Also if the group drop rate is 100% then don't worry about having Treasure Hunter because it won't factor in.
 					</p>
 				</div>
 
@@ -69,38 +100,11 @@
 						filter things.
 					</p>
 				</div>
-				<h5>Important Notice:</h5>
-				<p>
-					This site is not an "official" wings site so if you see anything that looks wrong please <strong>DO NOT</strong> file a ticket on the wings gitlab or with the official Wings 
-					GMs or Dev team. Instead feel free to drop me a DM in the Wings Discord and I'll take a look as time permits. Thank you!
-				</p>
 				<p>
 					
 				</p>
 			</div>
 		</div>
-
-		<div class="main_content">
-			<div class="wrap">
-				<div class="form zone_container">
-					<label>Choose a Zone:</label><br/>
-					<?php echo build_zone_drop_down(); ?>
-				</div>
-				<div class="form th_container">
-					<label>Apply Treasure Hunter:</label><br/>
-					<input type="radio" id="thzero" name="th" value="0" checked> <label for="thzero">TH 0</label>
-					<input type="radio" id="thone" name="th" value="1"> <label for="thone">TH 1</label>
-					<input type="radio" id="thtwo" name="th" value="2"> <label for="thtwo">TH 2</label>
-					<input type="radio" id="ththree" name="th" value="3"> <label for="ththree">TH 3</label>
-					<input type="radio" id="thfour" name="th" value="4"> <label for="thfour">TH 4</label>
-				</div>
-				<div class="mob_data_container data_container">
-					<?php echo get_zone_mobs( 116, 0 ); ?>
-					<?php echo get_zone_nm_mobs( 116, 0 ); ?>
-				</div>
-			</div>
-		</div>
-		
 		<?php include('site-footer.php') ?>
 	</body>	
 </html>

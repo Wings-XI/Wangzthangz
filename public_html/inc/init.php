@@ -12,7 +12,7 @@ if ( $maintenance === TRUE ) {
 	error_reporting(E_ALL);
 }
 
-$mysqli = new mysqli("localhost","website","5?i}d#nN.G5-","wings");
+$mysqli = new mysqli("db","test","example","wingsdb");
 
 function get_item_name( $item_ID ) {
 	global $mysqli;
@@ -152,10 +152,10 @@ if ( isset($_POST['callback']) ) {
 								// 36 => 'Empyreal Paradox',
 								// 37 => 'Temenos',
 								// 38 => 'Apollyon',
-   								// 38 => "Dynamis - Valkurm",
-   								// 40 => "Dynamis - Buburimu",
-   								// 41 => "Dynamis - Qufim",
-   								// 42 => "Dynamis - Tavnazia",
+   								38 => "Dynamis-Valkurm",
+   								40 => "Dynamis-Buburimu",
+   								41 => "Dynamis-Qufim",
+   								42 => "Dynamis-Tavnazia",
 								// 44 => 'Abdhaljs Isle-Purgonorgo',
 								51 => 'Wajaom Woodlands',
 								52 => 'Bhaflau Thickets',
@@ -232,6 +232,8 @@ if ( isset($_POST['callback']) ) {
 								// 129 => 'Ghoyus Reverie',
 								130 => 'RuAun Gardens',
 								// 131 => 'Mordion Gaol',
+								134 => 'Dynamis-Beaucedine',
+								135 => 'Dynamis-Xarcabard',
 								136 => 'Beaucedine Glacier [S]',
 								137 => 'Xarcabard [S]',
 								138 => 'Castle Zvahl Baileys [S]',
@@ -280,6 +282,10 @@ if ( isset($_POST['callback']) ) {
 								// 181 => 'The Celestial Nexus',
 								// 182 => 'Walk of Echoes',
 								184 => 'Lower Delkfutts Tower',
+								185 => 'Dynamis-San_dOria',
+								186 => 'Dynamis-Bastok',
+								187 => 'Dynamis-Windurst',
+								188 => 'Dynamis-Jeuno',
 								// 189 => 'Residential Area',
 								190 => 'King Ranperres Tomb',
 								191 => 'Dangruf Wadi',
@@ -345,8 +351,9 @@ if ( isset($_POST['callback']) ) {
 		global $mysqli;
 
 		// Perform query to get mobs
-		$output = "<div class='normal_mobs_container'>";
-		$output .= "<h2>Normal Mobs</h2>";
+		$output = "<button class='accordion'>Normal Mobs</button>";
+		$output .= "<div class='panel'>";
+		$output .= "<div class='normal_mobs_container'>";
 		$zone_id = intval($zone_id);
 
 		// if ( $zone_id == 505 ) {}
@@ -355,7 +362,7 @@ if ( isset($_POST['callback']) ) {
 										"SELECT * FROM mob_groups
 												LEFT JOIN mob_spawn_points ON 
 													mob_groups.groupid = mob_spawn_points.groupid AND 
-													mob_groups.name = mob_spawn_points.mobname
+													mob_groups.zoneid = ((mobid >> 12) & 0xFFF)
 											WHERE 
 												mob_groups.zoneid = ".$zone_id." AND 
 												(spawntype = 0 OR spawntype = 1 OR spawntype = 2 OR spawntype = 3 OR spawntype = 4) AND 
@@ -437,6 +444,7 @@ if ( isset($_POST['callback']) ) {
 		}
 
 		$output .= "</div>";
+		$output .= "</div>";
 
 		return $output;
 	}
@@ -444,19 +452,22 @@ if ( isset($_POST['callback']) ) {
 	function get_zone_nm_mobs( $zone_id, $th_value = 0 ) {
 		global $mysqli;
 
-		$output = "<div class='nm_mobs_container'>";
-		$output .= "<h2>Notorious Mobs</h2>";
+		$output = "<button class='accordion'>Notorious Mobs</button>";
+		$output .= "<div class='panel'>";
+		$output .= "<div class='nm_mobs_container'>";
 		$zone_id = intval($zone_id);
 		
 		if ($result = $mysqli -> query("SELECT * FROM mob_groups
-											LEFT JOIN mob_spawn_points ON mob_groups.groupid = mob_spawn_points.groupid AND mob_groups.name = mob_spawn_points.mobname
+											LEFT JOIN mob_spawn_points ON
+												mob_groups.groupid = mob_spawn_points.groupid AND
+												mob_groups.zoneid = ((mobid >> 12) & 0xFFF)
 											WHERE 
 											zoneid = ".$zone_id." AND 
 											( 
 												spawntype = 32 OR
 												spawntype = 64 OR
-												(spawntype = 128 AND respawntime > 1800) OR 
-												(spawntype = 128 AND respawntime = 0) OR 
+												spawntype = 128 OR
+												respawntime > 1800 OR
 												(spawntype = 0 AND respawntime > 1800) 
 											)
 											AND dropid != 0 
@@ -529,7 +540,7 @@ if ( isset($_POST['callback']) ) {
 						$output .= "<li class='name'><a target='_blank' href='https://ffxiclopedia.fandom.com/wiki/".$link_name."'>" . $name . "</a>".$special_spawn_condition."</li>";
 						$output .= "<li class='level'>" . $value["minLevel"] . ' - ' . $value['maxLevel'] . "</li>";
 						$output .= "<li class='drop'>" . get_mob_normal_drops( $value['dropid'], $th_value ) . "</li>";
-						$output .= "<li class='gdrop'>" . get_mob_grouped_drops( $value['dropid'] ) . "</li>";
+						$output .= "<li class='gdrop'>" . get_mob_grouped_drops( $value['dropid'], $th_value ) . "</li>";
 						$output .= "<li class='steal'>" . get_mob_steal_drops( $value['dropid'] ) . "</li>";
 					$output .= "</ul>";
 				}
@@ -542,8 +553,48 @@ if ( isset($_POST['callback']) ) {
 		}
 
 		$output .= "</div>";
+		$output .= "</div>";
 
 		return $output;
+	}
+
+	function get_rate_from_th( $base_rate, $th_value ) {
+		switch ( $th_value ) {
+			case 0:
+				$drop_rate = $base_rate / 10;
+				break;
+			case 1:
+				 $base_rate = $base_rate / 1000;
+				$drop_rate = $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .8);
+				$drop_rate = round($drop_rate * 100, 2);
+				break;
+			case 2:
+				$base_rate 		= $base_rate / 1000;
+				$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .41), 2);
+
+				$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
+				$drop_rate = round($drop_rate * 100, 2);
+				break;
+			case 3:
+				$base_rate 		= $base_rate / 1000;
+				$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .03), 2);
+
+				$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
+				$drop_rate = round($drop_rate * 100, 2);
+				break;
+			case 4:
+				$base_rate 		= $base_rate / 1000;
+				$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .25), 2);
+
+				$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
+				$drop_rate = round($drop_rate * 100, 2);
+				break;
+			default:
+				$drop_rate = $drop_rate / 10;
+				break;
+		}
+
+		return $drop_rate;
 	}
 
 	function get_mob_normal_drops( $drop_ID, $th_value ) {
@@ -598,41 +649,7 @@ if ( isset($_POST['callback']) ) {
 		if ($result = $mysqli -> query("SELECT * FROM mob_droplist WHERE dropId = ".$drop_ID." AND dropType = 0")) {
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
-					$drop_rate = $row['itemRate'];
-					switch ( $th_value ) {
-						case 0:
-							$drop_rate = $drop_rate / 10;
-							break;
-						case 1:
-						 	$base_rate = $drop_rate / 1000;
-							$drop_rate = $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .8);
-							$drop_rate = round($drop_rate * 100, 2);
-							break;
-						case 2:
-							$base_rate 		= $drop_rate / 1000;
-							$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .41), 2);
-
-							$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
-							$drop_rate = round($drop_rate * 100, 2);
-							break;
-						case 3:
-							$base_rate 		= $drop_rate / 1000;
-							$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .03), 2);
-
-							$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
-							$drop_rate = round($drop_rate * 100, 2);
-							break;
-						case 4:
-							$base_rate 		= $drop_rate / 1000;
-							$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .25), 2);
-
-							$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
-							$drop_rate = round($drop_rate * 100, 2);
-							break;
-						default:
-							$drop_rate = $drop_rate / 10;
-							break;
-					}
+					$drop_rate = get_rate_from_th( $row['itemRate'], $th_value );
 
 					$output .= '<span><a href="https://www.wingsxi.com/wings/index.php?page=item&id='.$row['itemId'].'" target="_blank">' . get_item_name($row['itemId']) . ' <i class="fas fa-external-link-alt"></i></a>&nbsp;&nbsp;(' . $drop_rate . '%)&nbsp;&nbsp;('. get_item_value($row['itemId']) . ' gil)</span>';
 				}
@@ -659,28 +676,30 @@ if ( isset($_POST['callback']) ) {
 		return $output;
 	}
 
-	function get_mob_grouped_drops( $drop_ID ) {
+	function get_mob_grouped_drops( $drop_ID, $th_value ) {
 		global $mysqli;
 
 		$output = '';
-		$group_id = 1;
+		$group_id = -1;
 		$i = 1;
 		if ($result = $mysqli -> query("SELECT * FROM mob_droplist WHERE dropId = ".$drop_ID." AND dropType = 1 order by groupId")) {
 			if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
-					if ( $i == 1 ) {
-						$output .= "<span>Group " . $group_id . " Rate: " . $row['groupRate'] / 10 . "%</span>";
-					}
-					
 					if ( $group_id != $row['groupId'] ) {
+						// Final info from previous group
+						if ( $group_id != -1 ) {
+							$output .= "<span>Total Item Weight: " . $total_rate . "</span>";
+						}
+						$total_rate = 0;
 						$group_id = $row['groupId'];
-						$output .= "<span>&nbsp;</span>";
-						$output .= "<span>Group " . $group_id . " Rate: " . $row['groupRate'] / 10 . "%</span>";
+						$output .= "<span><b>Group " . $group_id . "</b> Rate: " . $row['groupRate'] / 10 . "% (not including TH)</span>";
 					}
-					$drop_rate = ($row['itemRate'] / 1000) * 100;
-					$output .= '<span>' . get_item_name($row['itemId']) . ' (' . $drop_rate . '%) ('. get_item_value($row['itemId']) . ' gil)</span>';
+					$item_rate = $row['itemRate'];
+					$total_rate += $item_rate;
+					$output .= '<span>' . get_item_name($row['itemId']) . ' ('. get_item_value($row['itemId']) . ' gil) (Wght: ' . $item_rate . ') </span>';
 					$i++;
 				}
+				$output .= "<span>Total Item Weight: " . $total_rate . "</span><span>&nbsp;</span>";
 			} else {
 				$output .= 'N/A';
 			}
@@ -2293,5 +2312,24 @@ if ( isset($_POST['callback']) ) {
 		echo $result;
 	}
 
+	function get_last_startup() {
+		global $mysqli;
+
+		$query = "SHOW GLOBAL STATUS LIKE 'Uptime';";
+		$output = '<span>Tables Last Updated: ';
+		if ($result = $mysqli -> query( $query )) {
+			if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+					$output .= round( $row['Value'] / 60 / 60 / 24, 0);
+				}
+			} else {
+				$output .= 'NULL';
+			}
+		}
+
+		$output .= " days ago</span>";
+
+		return $output;
+	}
 
 ?>
