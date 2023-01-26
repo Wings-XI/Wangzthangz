@@ -3,6 +3,7 @@ version: '3.1'
 
 services:
   php:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,7 +12,7 @@ services:
 
   db:
     image: mariadb:latest
-    restart: always
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_USER: test
