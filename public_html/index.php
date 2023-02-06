@@ -1,4 +1,4 @@
-<?php include("inc/init.php"); ?>
+<?php include("./inc/init.php"); ?>
 <html>
 	<head>
 		<title>Wangz Thangz Tools</title>

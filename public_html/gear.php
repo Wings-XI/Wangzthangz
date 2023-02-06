@@ -1,11 +1,11 @@
-<?php include("inc/init.php"); ?>
+<?php include("./inc/init.php"); ?>
 <html>
 	<head>
 		<title>Wangz Thangz Tools</title>
 		<?php include('site-header.php') ?>
 	</head>
 	<body>
-		<div class='gear_popup'><div class="loading_container"><img class="loading" src='https://wangzthangz.com/assets/loading.gif' /></div></div>
+		<div class='gear_popup'><div class="loading_container"><img class="loading" src='./assets/loading.gif' /></div></div>
 		<?php include('site-navigation.php') ?>
 		<div class="top_content">
 			<div class="wrap">

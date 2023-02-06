@@ -13,10 +13,10 @@ jQuery(document).ready(function ( $) {
 		$(this).on('mouseout', function() {
 			// $('.gear_popup').toggle();
 			$('.gear_popup').css({"display": "none"});
-			$('.gear_popup').html('<div class="loading-container"><img class="loading" src=\'https://wangzthangz.com/assets/loading.gif\' /></div>');
+			$('.gear_popup').html('<div class="loading-container"><img class="loading" src=\'./assets/loading.gif\' /></div>');
 		});
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',
 			data: { item_id: item_id, callback: 'get_gear_popup' },
 			success: function (data,status,xhr) {
@@ -31,7 +31,7 @@ jQuery(document).ready(function ( $) {
 
 	$( '.gear_results' ).on( 'mouseout', function() {
 		$('.gear_popup').css({"display": "none"});
-		$('.gear_popup').html('<div class="loading-container"><img class="loading" src=\'https://wangzthangz.com/assets/loading.gif\' /></div>');
+		$('.gear_popup').html('<div class="loading-container"><img class="loading" src=\'./assets/loading.gif\' /></div>');
 	});	
 	
 	$( '#gear_form .submit' ).on('click', function(event) {
@@ -51,7 +51,7 @@ jQuery(document).ready(function ( $) {
 		// var latent_value = 0;
 
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { job: selected_job, slot: selected_slot, mod: selected_mod, latent: latent_value, callback: 'get_gear' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function
@@ -71,7 +71,7 @@ jQuery(document).ready(function ( $) {
 		var selected_zone = $(this).val();
 		var selected_th   = $('input[name=th]:checked').val();
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { zone: selected_zone, th: selected_th, callback: 'get_zone_mobs' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function
@@ -87,7 +87,7 @@ jQuery(document).ready(function ( $) {
 		var selected_th 	= $(this).val();
 		var selected_zone 	= $('#zone_select').val();
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { zone: selected_zone, th: selected_th, callback: 'get_zone_mobs' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function
@@ -106,7 +106,7 @@ jQuery(document).ready(function ( $) {
 
 		var selected_bcnm = $(this).val();
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { bcnm: selected_bcnm, callback: 'get_bcnm_drops' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function
@@ -125,7 +125,7 @@ jQuery(document).ready(function ( $) {
 
 		var selected_chest_coffer = $(this).val();
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { chest_coffer: selected_chest_coffer, callback: 'get_chest_coffer_drops' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function
@@ -144,7 +144,7 @@ jQuery(document).ready(function ( $) {
 
 		var selected_guild = $(this).val();
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { guild: selected_guild, callback: 'get_guild_point_items' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function
@@ -163,7 +163,7 @@ jQuery(document).ready(function ( $) {
 
 		var selected_cs_zone = $(this).val();
 
-		$.ajax('/inc/init.php', {
+		$.ajax(directory_root.concat('/inc/init.php'), {
 			type: 'POST',  // http method
 			data: { cd_zone: selected_cs_zone, callback: 'get_chocobo_digging' },  // data to submit
 			success: function (data,status,xhr) {   // success callback function

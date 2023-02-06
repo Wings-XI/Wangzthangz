@@ -12,7 +12,7 @@ if ( $maintenance === TRUE ) {
 	error_reporting(E_ALL);
 }
 
-$mysqli = new mysqli("db","test","example","wingsdb");
+require_once dirname(__FILE__) . '/configuration.php';
 
 function get_item_name( $item_ID ) {
 	global $mysqli;
@@ -431,7 +431,7 @@ if ( isset($_POST['callback']) ) {
 						$output .= "<li class='name'><a target='_blank' href='https://ffxiclopedia.fandom.com/wiki/".$link_name."'>" . $name . " <i class='fas fa-external-link-alt'></i></a>".$special_spawn_condition."</li>";
 						$output .= "<li class='level'>" . $value["minLevel"] . ' - ' . $value['maxLevel'] . "</li>";
 						$output .= "<li class='drop'>" . get_mob_normal_drops( $value['dropid'], $th_value ) . "</li>";
-						$output .= "<li class='gdrop'>" . get_mob_grouped_drops( $value['dropid'] ) . "</li>";
+						$output .= "<li class='gdrop'>" . get_mob_grouped_drops( $value['dropid'], $th_value ) . "</li>";
 						$output .= "<li class='steal'>" . get_mob_steal_drops( $value['dropid'] ) . "</li>";
 					$output .= "</ul>";
 				}
@@ -599,7 +599,7 @@ if ( isset($_POST['callback']) ) {
 
 	function get_mob_normal_drops( $drop_ID, $th_value ) {
 		global $mysqli;
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/limbus_loot_array.php';
+		require dirname(__FILE__) . '/limbus_loot_array.php';
 
 		// Omega Drops -- https://gitlab.com/ffxiwings/wings/-/blob/master/scripts/zones/Apollyon/npcs/Armoury_Crate.lua
 		if ( $drop_ID == 9999999 ) {
@@ -710,7 +710,7 @@ if ( isset($_POST['callback']) ) {
 
 // BCNM
 	function build_bcnm_drop_down() {
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/bcnm_arrays.php';
+		require dirname(__FILE__) . '/bcnm_arrays.php';
 
 		ksort($bcnms_master_table);
 
@@ -733,7 +733,7 @@ if ( isset($_POST['callback']) ) {
 	}
 
 	function get_bcnm_drops( $bcnm ) {
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/bcnm_arrays.php';
+		require dirname(__FILE__) . '/bcnm_arrays.php';
 
 		$output = "";
 		if (!empty($bcnms_master_table[$bcnm])) {
@@ -898,7 +898,7 @@ if ( isset($_POST['callback']) ) {
 
 // CHOCOBO DIGGING
 	function build_chocobo_digging_drop_down() {
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/chocobo_digging_arrays.php';
+		require dirname(__FILE__) . '/chocobo_digging_arrays.php';
 
 		// echo '<pre>';
 		// print_r($digInfo);
@@ -919,7 +919,7 @@ if ( isset($_POST['callback']) ) {
 	}
 
 	function get_chocobo_digging_drops( $zone ) {
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/chocobo_digging_arrays.php';
+		require dirname(__FILE__) . '/chocobo_digging_arrays.php';
 
 		$selected_dig_zone = $digInfo[$zone];
 
@@ -977,8 +977,8 @@ if ( isset($_POST['callback']) ) {
 
 // COFFERS & CHESTS
 	function build_chest_coffer_drop_down() {
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/treasure_chest_array.php';
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/treasure_coffer_array.php';
+		require dirname(__FILE__) . '/treasure_chest_array.php';
+		require dirname(__FILE__) . '/treasure_coffer_array.php';
 
 		$zone_output = array_merge( $treasure_chest_array, $treasure_coffer_array );
 		ksort($zone_output);
@@ -1002,8 +1002,8 @@ if ( isset($_POST['callback']) ) {
 			return;
 		}
 
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/treasure_chest_array.php';
-		require $_SERVER['DOCUMENT_ROOT'] . '/inc/treasure_coffer_array.php';
+		require dirname(__FILE__) . '/treasure_chest_array.php';
+		require dirname(__FILE__) . '/treasure_coffer_array.php';
 
 		$selected_chest 	= $treasure_chest_array[$zone];
 		$selected_coffer 	= $treasure_coffer_array[$zone];
