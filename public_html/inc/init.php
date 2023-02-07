@@ -470,9 +470,9 @@ if ( isset($_POST['callback']) ) {
 												spawntype = 128 OR
 												respawntime > 1800 OR
 												(spawntype = 0 AND respawntime > 1800) 
-											)
+											) AND
 											(pos_x <> 0 AND pos_y <> 0 AND pos_z <> 0) AND
-											AND dropid != 0 
+											dropid != 0
 											-- AND ( pos_x != 0 AND pos_x != 1 )
 											AND name NOT IN ( SELECT name FROM fishing_mob WHERE zoneid = ".$zone_id." )
 											ORDER BY name, minLevel")) {
