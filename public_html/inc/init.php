@@ -359,7 +359,7 @@ if ( isset($_POST['callback']) ) {
 		// if ( $zone_id == 505 ) {}
 
 		if ($result = $mysqli -> query(
-										"SELECT * FROM mob_groups
+										"SELECT concat(name,'-',dropid) as listkey, mob_groups.* FROM mob_groups
 												LEFT JOIN mob_spawn_points ON 
 													mob_groups.groupid = mob_spawn_points.groupid AND 
 													mob_groups.zoneid = ((mobid >> 12) & 0xFFF)
@@ -371,7 +371,7 @@ if ( isset($_POST['callback']) ) {
 												-- dropid != 0 AND
 												mob_groups.name NOT IN ( SELECT name FROM fishing_mob WHERE zoneid = ".$zone_id." ) AND
 												mob_groups.groupid IN ( SELECT mob_spawn_points.groupid FROM mob_spawn_points WHERE 1 ) 
-											ORDER BY name, minLevel"
+											ORDER BY listkey, minLevel"
 											)) {
 			if ($result->num_rows > 0) {
 				$output .= "<ul class='header'>
@@ -385,23 +385,17 @@ if ( isset($_POST['callback']) ) {
 				$mob_array = array();
 				while($row = $result->fetch_assoc()) {
 
-					if ( strpos( $row['name'], '2' ) ) {
-						continue;
-					}
-					if ( strpos( $row['name'], 'Aern' ) ) {
-						continue;
-					}
-
-					if ( array_key_exists($row['name'], $mob_array) ) {
+					if ( array_key_exists($row['listkey'], $mob_array) ) {
 						$name = $row['name'];
-						$set_drop_id = $mob_array[$name]['dropid'];
+						$set_drop_id = $mob_array[ $row['listkey'] ]['dropid'];
 						if ( $set_drop_id == $row['dropid'] ) {
 							// This mob has the same name and drop id as one already in our array
 							// Set the existing mobs max level to this mobs max level
-							$mob_array[$name]['maxLevel'] = $row['maxLevel'];
+							$mob_array[ $row['listkey'] ]['maxLevel'] = $row['maxLevel'];
 						}
 					} else {
-						$mob_array[ $row['name'] ] = array( 
+						$mob_array[ $row['listkey'] ] = array(
+															'name'	   => $row['name'],
 															'minLevel' => $row['minLevel'],
 															'maxLevel' => $row['maxLevel'],
 															'dropid' => $row['dropid'], 
@@ -411,7 +405,7 @@ if ( isset($_POST['callback']) ) {
 				}
 		
 				foreach ($mob_array as $key => $value) {
-					$link_name 					= str_replace(array( '_present', '_pres', '_both', '_past' ) , '', $key);
+					$link_name 					= str_replace(array( '_present', '_pres', '_both', '_past' ) , '', $value['name']);
 					$name 						= str_replace('_', ' ', $link_name);
 					switch( $value['spawntype'] ) {
 						case 1:
@@ -458,7 +452,7 @@ if ( isset($_POST['callback']) ) {
 		$output .= "<div class='nm_mobs_container'>";
 		$zone_id = intval($zone_id);
 		
-		if ($result = $mysqli -> query("SELECT * FROM mob_groups
+		if ($result = $mysqli -> query("SELECT concat(name,'-',dropid) as listkey, mob_groups.* FROM mob_groups
 											LEFT JOIN mob_spawn_points ON
 												mob_groups.groupid = mob_spawn_points.groupid AND
 												mob_groups.zoneid = ((mobid >> 12) & 0xFFF)
@@ -496,16 +490,17 @@ if ( isset($_POST['callback']) ) {
 						continue;
 					}
 
-					if ( array_key_exists($row['name'], $mob_array) ) {
+					if ( array_key_exists($row['listkey'], $mob_array) ) {
 						$name = $row['name'];
-						$set_drop_id = $mob_array[$name]['dropid'];
+						$set_drop_id = $mob_array[ $row['listkey'] ]['dropid'];
 						if ( $set_drop_id == $row['dropid'] ) {
 							// This mob has the same name and drop id as one already in our array
 							// Set the existing mobs max level to this mobs max level
-							$mob_array[$name]['maxLevel'] = $row['maxLevel'];
+							$mob_array[ $row['listkey'] ]['maxLevel'] = $row['maxLevel'];
 						}
 					} else {
-						$mob_array[ $row['name'] ] = array( 
+						$mob_array[ $row['listkey'] ] = array(
+															'name'	 	    => $row['name'],
 															'minLevel' 		=> $row['minLevel'],
 															'maxLevel' 		=> $row['maxLevel'],
 															'dropid' 		=> $row['dropid'],
@@ -516,7 +511,7 @@ if ( isset($_POST['callback']) ) {
 				}
 		
 				foreach ($mob_array as $key => $value) {
-					$link_name 	= str_replace(array( '_present','_pres', '_both' ) , '', $key);
+					$link_name 	= str_replace(array( '_present','_pres', '_both' ) , '', $value['name']);
 					$name 		= str_replace('_', ' ', $link_name);
 
 					switch( $value['spawntype'] ) {
