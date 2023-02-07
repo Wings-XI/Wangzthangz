@@ -1,10 +1,10 @@
 <?php
 	$menu = array(
-		"../index.php" 			=> "Mob Drops",
-		"../bcnm.php" 			=> "BCNM / KSNM / ENM Drops",
-		"../gpitems.php" 			=> "GP Items",
-		"../chocobodigging.php" 	=> "Choco Digging",
-		"../coffer_chests.php" 	=> "Chests / Coffers"
+		"./index.php" 			=> "Mob Drops",
+		"./bcnm.php" 			=> "BCNM / KSNM / ENM Drops",
+		"./gpitems.php" 			=> "GP Items",
+		"./chocobodigging.php" 	=> "Choco Digging",
+		"./coffer_chests.php" 	=> "Chests / Coffers"
 	);
 ?>
 <div class="site-navigation">
