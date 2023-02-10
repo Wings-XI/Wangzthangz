@@ -555,43 +555,30 @@ if ( isset($_POST['callback']) ) {
 		return $output;
 	}
 
-	function get_rate_from_th( $base_rate, $th_value ) {
+	function get_rate_from_th( $base_rate = 0, $th_value = 0) {
+		// TH1 gives boost to drop rate
+		// TH2 through TH4 give boost to first drop chance then provides X additional random chances with the base rate
+		$drop_rate = $base_rate / 1000;
 		switch ( $th_value ) {
-			case 0:
-				$drop_rate = $base_rate / 10;
-				break;
 			case 1:
-				 $base_rate = $base_rate / 1000;
-				$drop_rate = $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .8);
-				$drop_rate = round($drop_rate * 100, 2);
+				$boostPerc = .8;
+				$drop_rate = ($base_rate + ($base_rate * (1000 - $base_rate) / 1000 * $boostPerc)) / 1000;
 				break;
 			case 2:
-				$base_rate 		= $base_rate / 1000;
-				$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .41), 2);
-
-				$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
-				$drop_rate = round($drop_rate * 100, 2);
+				$boostPerc = .41;
+				$drop_rate = 1 - (1 - $base_rate / 1000) * (1 - ($base_rate + ($base_rate * (1000 - $base_rate) / 1000 * $boostPerc)) / 1000);
 				break;
 			case 3:
-				$base_rate 		= $base_rate / 1000;
-				$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .03), 2);
-
-				$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
-				$drop_rate = round($drop_rate * 100, 2);
+				$boostPerc = .03;
+				$drop_rate = 1 - pow((1 - $base_rate / 1000), 2) * (1 - ($base_rate + ($base_rate * (1000 - $base_rate) / 1000 * $boostPerc)) / 1000);
 				break;
 			case 4:
-				$base_rate 		= $base_rate / 1000;
-				$last_roll_rate = round( $base_rate + ($base_rate * (1000 - $drop_rate)/1000 * .25), 2);
-
-				$drop_rate = 1 - ( ( 1 - $base_rate ) * ( 1 - $base_rate ) * ( 1 - $last_roll_rate ) );
-				$drop_rate = round($drop_rate * 100, 2);
-				break;
-			default:
-				$drop_rate = $drop_rate / 10;
+				$boostPerc = .25;
+				$drop_rate = 1 - pow((1 - $base_rate / 1000), 2) * (1 - ($base_rate + ($base_rate * (1000 - $base_rate) / 1000 * $boostPerc)) / 1000);
 				break;
 		}
 
-		return $drop_rate;
+		return round($drop_rate * 100, 2);
 	}
 
 	function get_mob_normal_drops( $drop_ID, $th_value ) {
@@ -689,7 +676,7 @@ if ( isset($_POST['callback']) ) {
 						}
 						$total_rate = 0;
 						$group_id = $row['groupId'];
-						$output .= "<span><b>Group " . $group_id . "</b> Rate: " . $row['groupRate'] / 10 . "% (not including TH)</span>";
+						$output .= "<span><b>Group " . $group_id . "</b> Rate: " . get_rate_from_th( $row['groupRate'], $th_value ) . "% </span>";
 					}
 					$item_rate = $row['itemRate'];
 					$total_rate += $item_rate;
@@ -717,12 +704,7 @@ if ( isset($_POST['callback']) ) {
 			$output .= "<option value='xx' selected>Choose a BCNM / KSNM / ENM</option>";
 			foreach ($bcnms_master_table as $key => $value) {
 				$proper_name = ucwords(str_replace('_', ' ', $key));
-				if ( $key == 'royal_jelly' ) {
-					$output .= "<option value='{$key}' selected>{$proper_name}</option>";
-				} else {
-					$output .= "<option value='{$key}'>{$proper_name}</option>";	
-				}
-				
+				$output .= "<option value='{$key}'>{$proper_name}</option>";
 			}
 		$output .= "</select>";
 
