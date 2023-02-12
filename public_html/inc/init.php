@@ -152,7 +152,7 @@ if ( isset($_POST['callback']) ) {
 								// 36 => 'Empyreal Paradox',
 								// 37 => 'Temenos',
 								// 38 => 'Apollyon',
-   								38 => "Dynamis-Valkurm",
+   								39 => "Dynamis-Valkurm",
    								40 => "Dynamis-Buburimu",
    								41 => "Dynamis-Qufim",
    								42 => "Dynamis-Tavnazia",
