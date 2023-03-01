@@ -251,6 +251,14 @@ tpz_zone = {
     1307: "central_temenos_4th_floor_ii",
 }
 
+mapping = str.maketrans({
+    '.': '_',
+    '[': '',
+    ']': '',
+    '{': 'array(',
+    '}': ')',
+})
+
 zone_ids = dict(zip(tpz_zone.values(), tpz_zone.keys()))
 
 re_require = re.compile('^(require).*', re.I)
@@ -305,8 +313,7 @@ def convert(filename: str, keep_comments=True, merge_arrays=False, replace_ids=T
         brkarrayvar = re_brkarrayvar.findall(temp)
 
          # Replace simple items
-        temp = temp.replace('{', 'array(')
-        temp = temp.replace('}', ')')
+        temp = temp.translate(mapping)
         temp = temp.replace('--', '#', 1)
 
         # Replace less simple items
@@ -331,8 +338,7 @@ def convert(filename: str, keep_comments=True, merge_arrays=False, replace_ids=T
 
         if brkarrayvar:
             item = brkarrayvar[0]
-            item = item.replace('[', '')
-            item = item.replace(']', '')
+            item = item.translate(mapping)
             if item.isdigit() and replace_ids:
                 bcnm_name = tpz_zone[int(item)]
                 item = f"$bcnms_master_table['{bcnm_name}']"
